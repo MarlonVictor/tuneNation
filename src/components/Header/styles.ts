@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
         justify-content: space-between;
 
         max-width: 1240px;
-        height: 50px;
+        height: 55px;
 
         margin: 0 auto;
         padding: 0 1rem;
@@ -123,7 +123,7 @@ export const ToggleMenu = styled.div`
         top: 50px;
 
         width: 100%;
-        height: 30px;
+        height: 35px;
 
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         background: ${({ theme }) => theme.card};

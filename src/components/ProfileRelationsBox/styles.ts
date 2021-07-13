@@ -56,7 +56,7 @@ export const PopularProfilesContainer = styled.section`
             gap: 0.4rem;
     
             font-size: 1rem;
-            padding: 1rem 0;
+            padding: 10px 0;
             font-weight: 500;
 
             svg {

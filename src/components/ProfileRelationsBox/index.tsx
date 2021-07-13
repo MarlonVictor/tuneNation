@@ -10,8 +10,6 @@ export function PopularProfiles() {
 		'juunegreiros',
 		'omariosouto',
 		'peas',
-		'rafaballerini',
-		'marcobrunodev',
 	]
 
 	return (

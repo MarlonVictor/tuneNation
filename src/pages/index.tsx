@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import { Header } from '../components/Header'
 import { ProfileSidebar } from '../components/ProfileSidebar'
+import { FormBox } from '../components/FormBox'
 import { PopularProfiles, ProfileFriends } from '../components/ProfileRelationsBox'
 
 import { HomeContainer } from '../styles/pages/home'
@@ -28,9 +29,15 @@ export default function Home() {
 					</section>
 				</div>
 
-				<section>
-					<h2>Bem vindo</h2>
-				</section>
+				<div>
+					<section>
+						<FormBox />
+					</section>
+
+					<section>
+						<h2>Scraps</h2>
+					</section>
+				</div>
 
 				<div>
 					<PopularProfiles />
