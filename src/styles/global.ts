@@ -17,6 +17,31 @@ export default createGlobalStyle`
         font: 400 16px Inter, sans-serif;
     }
 
+    section {
+        margin-bottom: 0.8rem;
+
+        background-color: ${({ theme }) => theme.card};
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        border-radius: 0.5rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    h2 {
+        color: ${({ theme }) => theme.title};
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
     @media(max-width: 1440px) {
         html {
             // 15px
