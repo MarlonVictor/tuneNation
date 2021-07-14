@@ -11,6 +11,25 @@ export const PopularProfilesContainer = styled.section`
             gap: 1rem;
 
             margin: 0.5rem 1rem;
+            cursor: default;
+
+            &.follower-item {
+                margin: 0;
+                padding: 0.5rem 1rem;
+                
+                cursor: pointer;
+                transition: background 0.2s;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                &:hover {
+                    background: ${({ theme }) => theme.background};
+                }          
+            }
 
             img {
                 width: 40px;
@@ -43,12 +62,6 @@ export const PopularProfilesContainer = styled.section`
         margin-top: 1rem;
         border-top: 2px solid ${({ theme }) => theme.background};
 
-        &:hover {
-            a {
-                font-weight: 600;
-            }
-        }
-        
         a {
             display: flex;
             align-items: center;
@@ -61,6 +74,12 @@ export const PopularProfilesContainer = styled.section`
 
             svg {
                 font-size: 1.1rem;
+            }
+        }
+
+        &:hover {
+            a {
+                font-weight: 600;
             }
         }
     }
