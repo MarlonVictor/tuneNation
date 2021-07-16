@@ -6,6 +6,8 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+
+        transition: background 0.2s, border-color 0.2s;
     }
 
     body {
@@ -40,6 +42,10 @@ export default createGlobalStyle`
         display: block;
         max-width: 100%;
         height: auto;
+    }
+
+    input {
+        background: transparent;
     }
 
     @media(max-width: 1440px) {

@@ -1,4 +1,4 @@
-export const theme = {
+export const lightTheme = {
 	background: '#F9F9F9',
 	primary: '#FeD103',
 	secondary: '#7698E2',
@@ -9,4 +9,13 @@ export const theme = {
 	border: '#ADB5BD',
 }
 
-export default theme
+export const darkTheme = {
+	background: '#202124',
+	primary: '#FED103',
+	secondary: '#7698E2',
+	text: '#E7F0FF',
+	title: '#fff',
+	button: '#565A6A',
+	card: '#303134',
+	border: '#ADB5BD',
+}

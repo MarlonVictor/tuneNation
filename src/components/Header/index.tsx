@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-
-import { BiSearchAlt2, BiExit, BiMoon, BiSun } from 'react-icons/bi'
+import Image from 'next/image'
+import React, { useContext } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { BiSearchAlt2, BiExit, BiMoon, BiSun } from 'react-icons/bi'
 
-import LogoImage from '../../../public/logo.svg'
+import { ThemeContext } from '../../context/ThemeContext'
+
+import LightLogoImage from '../../../public/light-logo.svg'
+import DarkLogoImage from '../../../public/dark-logo.svg'
 
 import { HeaderContainer, InputContent, NavigationAnchors, ToggleMenu } from './styles'
 
 
 export function Header() {
-	const [isDark, setIsDark] = useState(false)
+	const { theme, toggleTheme } = useContext(ThemeContext)
 
 	return (
 		<HeaderContainer>
 			<nav>
 				<div>
 					<Image 
-						src={LogoImage}
+						src={theme === 'light' ? LightLogoImage : DarkLogoImage}
 						alt="Tune Nation"
 						width={100}
 						height={50}
@@ -43,14 +45,14 @@ export function Header() {
 				</div>
 				
 				<div>
-					{isDark 
+					{theme == 'light' 
 						? <BiSun 
 							className="toggle-theme light" 
-							onClick={() => setIsDark(false)}
+							onClick={toggleTheme}
 						/>
 						: <BiMoon 
 							className="toggle-theme dark" 
-							onClick={() => setIsDark(true)}
+							onClick={toggleTheme}
 						/>
 					}
 
