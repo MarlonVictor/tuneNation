@@ -3,10 +3,11 @@ import Head from 'next/head'
 
 import { api } from '../services/api'
 
-import { Header } from '../components/Header'
+import { FollowersBox, PopularUsersBox } from '../components/ProfileRelationsBox'
 import { ProfileSidebar } from '../components/ProfileSidebar'
+import { CommunitiesBox } from '../components/CommunitiesBox'
 import { FormBox } from '../components/FormBox'
-import { ProfileRelationsBox } from '../components/ProfileRelationsBox'
+import { Header } from '../components/Header'
 
 import { HomeContainer } from '../styles/pages/home'
 
@@ -15,21 +16,14 @@ export default function Home() {
 	const githubUser = 'MarlonVictor'
 
 	const [followers, setFollowers] = useState([])
-	const [popularUsers, setPopularUsers] = useState([])
 
 	async function fetchFollowers() {
 		const { data } = await api.get(`users/${githubUser}/followers`)
 		setFollowers(data)
 	}
 
-	async function fetchPopularUsers() {
-		const { data } = await api.get('orgs/Rocketseat/members')
-		setPopularUsers(data)
-	}
-
 	useEffect(() => {
 		fetchFollowers()
-		fetchPopularUsers()
 	}, [])
 
 	return (
@@ -44,20 +38,10 @@ export default function Home() {
 				<div>
 					<ProfileSidebar username={githubUser} />
 
-					<section>
-						<h2>Comunidades</h2>
-					</section>
+					<PopularUsersBox />
 				</div>
 
 				<div>
-					{/* <section className="flex">
-						<h2>Bem vindo(a), Marlon Victor</h2>
-						<small className="day">
-							<strong>Sorte de hoje: </strong>
-							O melhor profeta do futuro é o passado
-						</small>
-					</section> */}
-
 					<section>
 						<FormBox />
 					</section>
@@ -68,15 +52,9 @@ export default function Home() {
 				</div>
 
 				<div>
-					<ProfileRelationsBox 
-						type="popular"
-						users={popularUsers}
-					/>
+					<CommunitiesBox />
 
-					<ProfileRelationsBox 
-						type="followers"
-						users={followers}
-					/>
+					<FollowersBox followersList={followers} />
 				</div>
 			</HomeContainer>
 		</>

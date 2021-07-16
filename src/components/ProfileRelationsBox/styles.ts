@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-export const PopularProfilesContainer = styled.section`
+export const ProfileRelationsContainer = styled.section`
     ul {
         list-style: none;
 
@@ -57,30 +57,30 @@ export const PopularProfilesContainer = styled.section`
             }
         }
     }
+`
 
-    footer {
-        margin-top: 1rem;
-        border-top: 2px solid ${({ theme }) => theme.background};
+export const ProfileRelationsFooter = styled.footer`
+    margin-top: 1rem;
+    border-top: 2px solid ${({ theme }) => theme.background};
 
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-    
-            font-size: 1rem;
-            padding: 10px 0;
-            font-weight: 500;
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
 
-            svg {
-                font-size: 1.1rem;
-            }
+        font-size: 1rem;
+        padding: 10px 0;
+        font-weight: 500;
+
+        svg {
+            font-size: 1.1rem;
         }
+    }
 
-        &:hover {
-            a {
-                font-weight: 600;
-            }
+    &:hover {
+        a {
+            font-weight: 600;
         }
     }
 `

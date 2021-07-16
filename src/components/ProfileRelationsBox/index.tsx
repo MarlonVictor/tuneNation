@@ -1,8 +1,7 @@
 import React from 'react'
-
 import { BiPlus } from 'react-icons/bi'
 
-import { PopularProfilesContainer } from './styles'
+import { ProfileRelationsContainer, ProfileRelationsFooter } from './styles'
 
 
 type User = {
@@ -12,75 +11,81 @@ type User = {
 	html_url: string,
 }
 
-type ProfileRelationsBoxProps = {
-	type: string,
-	users?: User[],
+type FollowersBoxProps = {
+	followersList: User[]
 }
 
-export function ProfileRelationsBox({ type, users }: ProfileRelationsBoxProps) {
-	if (type === 'followers') {
-		return (
-			<PopularProfilesContainer>
-				<h2>Meus seguidores</h2>
+function FooterComponent() {
+	return (
+		<ProfileRelationsFooter>
+			<a href="/">
+				<BiPlus />
+				Ver mais pessoas
+			</a>
+		</ProfileRelationsFooter>
+	)
+}
 
-				<ul>
-					{users.slice(0, 6).map(user => {
-						return (
-							<li key={user.id} className="follower-item">
-								<a href={user.html_url} target="_blank" rel="noreferrer">
-									<img src={user.avatar_url} />
+export function FollowersBox({ followersList }: FollowersBoxProps) {
+	return (
+		<ProfileRelationsContainer>
+			<h2>Meus Seguidores</h2>
+
+			<ul>
+				{followersList.slice(0, 6).map(follower => {
+					return (
+						<li key={follower.id} className="follower-item">
+							<a href={follower.html_url} target="_blank" rel="noreferrer">
+								<img src={follower.avatar_url} />
 									
-									<div>
-										<span>@{user.login}</span>
-									</div>
-								</a>
-							</li>
-						)
-					})}
-				</ul>
-
-				<footer>
-					<a href="/">
-						<BiPlus />
-						Ver mais pessoas
-					</a>
-				</footer>
-			</PopularProfilesContainer>
-		)
-
-	} else {
-		return (
-			<PopularProfilesContainer>
-				<h2>Pessoas populares</h2>
-
-				<ul>
-					{users.slice(0, 4).map(user => {
-						return (
-							<li key={user.id}>
-								<img src={user.avatar_url} />
-							
 								<div>
-									<span>@{user.login}</span>
-									<a 
-										target="_blank" 
-										rel="noreferrer"
-										href={user.html_url} 
-									>
-										Seguir
-									</a>
+									<span>@{follower.login}</span>
 								</div>
-							</li>
-						)
-					})}
-				</ul>
+							</a>
+						</li>
+					)
+				})}
+			</ul>
 
-				<footer>
-					<a href="/">
-						<BiPlus />
-						Ver mais pessoas
-					</a>
-				</footer>
-			</PopularProfilesContainer>
-		)
-	}
+			<FooterComponent />
+		</ProfileRelationsContainer>
+	)
+}
+
+export function PopularUsersBox() {
+	const popularUsers = [
+		'peas',
+		'omariosouto',
+		'juunegreiros',
+		'rafaballerini',
+	]
+	
+	return (
+		<ProfileRelationsContainer>
+			<h2>Pessoas Populares</h2>
+
+			<ul>
+				{popularUsers.map((user, key) => {
+					return (
+						<li key={key}>
+							<img src={`https://github.com/${user}.png`} />
+							
+							<div>
+								<span>@{user}</span>
+								<a 
+									target="_blank" 
+									rel="noreferrer"
+									href={`https://github.com/${user}`} 
+								>
+									Seguir
+								</a>
+							</div>
+						</li>
+					)
+				})}
+			</ul>
+
+			<FooterComponent />
+		</ProfileRelationsContainer>
+	)
 }
