@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 
 import { api } from '../services/api'
+import { useCommunities } from '../hooks/useCommunities'
 
 import { FollowersBox, PopularUsersBox } from '../components/ProfileRelationsBox'
 import { ProfileSidebar } from '../components/ProfileSidebar'
@@ -15,13 +16,15 @@ import { HomeContainer } from '../styles/pages/home'
 export default function Home() {
 	const githubUser = 'MarlonVictor'
 
+	const { communities } = useCommunities()
+
 	const [followers, setFollowers] = useState([])
 
 	async function fetchFollowers() {
 		const { data } = await api.get(`users/${githubUser}/followers`)
 		setFollowers(data)
 	}
-
+	
 	useEffect(() => {
 		fetchFollowers()
 	}, [])
@@ -52,9 +55,12 @@ export default function Home() {
 				</div>
 
 				<div>
-					<CommunitiesBox />
+					<CommunitiesBox communities={communities} />
 
-					<FollowersBox followersList={followers} />
+					<FollowersBox 
+						username={githubUser}
+						followersList={followers} 
+					/>
 				</div>
 			</HomeContainer>
 		</>

@@ -1,78 +1,53 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
+
+const BasicInputStyle = css`
+    padding: 0.5rem 1rem;
+
+    border: 0;
+    border-bottom: 2px solid ${({ theme }) => theme.background};
+    
+    font-size: 1rem;
+    color: ${({ theme }) => theme.text};
+    
+    background: ${({ theme }) => theme.card};
+    
+    outline: none;
+    transition: filter 0.2s, background 0.2s, border-color 0.2s;
+
+    &:hover, &:focus {
+        filter: brightness(0.98);
+    }
+`
 
 export const FormBoxContainer = styled.form`
     textarea {
         width: 100%;
-        min-height: 100px;
-        padding: 0.5rem;
-
-        font-size: 1rem;
-        color: ${({ theme }) => theme.text};
-        background: transparent;
+        min-height: 135px;
     
         border-radius: 8px 8px 0 0;
-        border: 0;
-        outline: none;
         resize: vertical;
+
+        ${BasicInputStyle}
     }
 
-    .create-community-wrapper {
+    div {
         display: flex;
         flex-direction: column;
-
-        height: 104px;
-
+        
         input {
-            flex: 1;
-            padding: 0 0.5rem;
-
-            font-size: 1rem;
-
-            border: 0;
-            outline: none;
-
-            &:last-child {
-                border-top: 2px solid ${({ theme }) => theme.background};
-            }
-        }
-    }
-
-    footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5rem;
-
-        border-top: 2px solid ${({ theme }) => theme.background};
-
-        > button {
-            border: 0;
-            background: transparent;
-            transform: translateY(2px);
-
-            svg {
-                margin: 0 1rem;
-
-                font-size: 1.7rem;
-                color: ${({ theme }) => theme.primary};
-
-                cursor: pointer;
-                transition: transform 0.2s;
-
-                &:hover {
-                    transform: translateX(3px);
-                }
-            }
+            height: 45px;
+            ${BasicInputStyle}
         }
     }
 `
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+
+    padding: 0.4rem 1rem 0.5rem;
 
     button {
         display: flex;
@@ -81,28 +56,31 @@ export const ButtonContainer = styled.div`
 
         padding: 0.5rem;
 
-        font-size: 1rem;
-        font-weight: 500;
-        color: ${({ theme }) => theme.title};
-        background: ${({ theme }) => theme.card};
-
         border: 0;
-        border-top: 1px solid ${({ theme }) => theme.background};
-        border-radius: 0 0 8px 8px;
+        border-radius: 8px;
 
-        cursor: pointer;
+        font-size: 1rem;
+        color: ${({ theme }) => theme.text};
+        background: ${({ theme }) => theme.button};
         
+        cursor: pointer;
+        transition: filter 0.2s;
+
         svg {
             font-size: 1.2rem;
         }
 
-        &.selected {
-            background: ${({ theme }) => theme.button};
-            border-bottom: 1px solid transparent;
+        &.submit {
+            color: ${({ theme }) => theme.primary};
+            background: transparent;
+
+            svg {
+                font-size: 1.7rem;
+            }
         }
 
         &:hover {
-            filter: brightness(0.97);
+            filter: brightness(0.9);
         }
     }
 `

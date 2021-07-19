@@ -19,6 +19,7 @@ export const CommunitiesBoxList = styled.ul`
         img {
             position: absolute;
             height: 100%;
+            width: 100%;
 
             object-fit: cover;
             border-radius: 8px;

@@ -4,7 +4,7 @@ import { BiPlus } from 'react-icons/bi'
 import { ProfileRelationsContainer, ProfileRelationsFooter } from './styles'
 
 
-type User = {
+type UserType = {
 	id: number,
 	login: string,
 	avatar_url: string,
@@ -12,21 +12,11 @@ type User = {
 }
 
 type FollowersBoxProps = {
-	followersList: User[]
+	username: string,
+	followersList: UserType[],
 }
 
-function FooterComponent() {
-	return (
-		<ProfileRelationsFooter>
-			<a href="/">
-				<BiPlus />
-				Ver mais pessoas
-			</a>
-		</ProfileRelationsFooter>
-	)
-}
-
-export function FollowersBox({ followersList }: FollowersBoxProps) {
+export function FollowersBox({ username, followersList }: FollowersBoxProps) {
 	return (
 		<ProfileRelationsContainer>
 			<h2>Meus Seguidores</h2>
@@ -35,7 +25,11 @@ export function FollowersBox({ followersList }: FollowersBoxProps) {
 				{followersList.slice(0, 6).map(follower => {
 					return (
 						<li key={follower.id} className="follower-item">
-							<a href={follower.html_url} target="_blank" rel="noreferrer">
+							<a 
+								target="_blank" 
+								rel="noreferrer"
+								href={follower.html_url} 
+							>
 								<img src={follower.avatar_url} />
 									
 								<div>
@@ -47,7 +41,16 @@ export function FollowersBox({ followersList }: FollowersBoxProps) {
 				})}
 			</ul>
 
-			<FooterComponent />
+			<ProfileRelationsFooter>
+				<a 
+					target="_blank" 
+					rel="noreferrer"
+					href={`https://github.com/${username}?tab=followers`}
+				>
+					<BiPlus />
+					Ver mais pessoas
+				</a>
+			</ProfileRelationsFooter>
 		</ProfileRelationsContainer>
 	)
 }
@@ -84,8 +87,6 @@ export function PopularUsersBox() {
 					)
 				})}
 			</ul>
-
-			<FooterComponent />
 		</ProfileRelationsContainer>
 	)
 }

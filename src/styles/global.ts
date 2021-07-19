@@ -10,6 +10,20 @@ export default createGlobalStyle`
         transition: background 0.2s, border-color 0.2s;
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        transition: .3s;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.scroll};
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: ${({ theme }) => theme.background};
+        border-radius: 10px;
+    }
+
     body {
         background: ${({ theme }) => theme.background};
         color: ${({ theme }) => theme.text};

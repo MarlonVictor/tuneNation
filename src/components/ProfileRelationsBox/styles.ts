@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const ProfileRelationsContainer = styled.section`
     ul {
+        padding-bottom: 1rem;
         list-style: none;
 
         li {
@@ -11,6 +12,8 @@ export const ProfileRelationsContainer = styled.section`
             gap: 1rem;
 
             margin: 0.5rem 1rem;
+
+            background: ${({ theme }) => theme.card};
             cursor: default;
 
             &.follower-item {
@@ -18,7 +21,7 @@ export const ProfileRelationsContainer = styled.section`
                 padding: 0.5rem 1rem;
                 
                 cursor: pointer;
-                transition: background 0.2s;
+                transition: filter 0.2s, background 0.2s;
 
                 a {
                     display: flex;
@@ -27,8 +30,8 @@ export const ProfileRelationsContainer = styled.section`
                 }
 
                 &:hover {
-                    background: ${({ theme }) => theme.background};
-                }          
+                    filter: brightness(0.98);
+                }         
             }
 
             img {
@@ -60,7 +63,6 @@ export const ProfileRelationsContainer = styled.section`
 `
 
 export const ProfileRelationsFooter = styled.footer`
-    margin-top: 1rem;
     border-top: 2px solid ${({ theme }) => theme.background};
 
     a {
