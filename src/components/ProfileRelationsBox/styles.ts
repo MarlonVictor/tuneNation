@@ -47,6 +47,15 @@ export const ProfileRelationsContainer = styled.section`
 
                 span {
                     font-size: 1rem;
+                    display: inline-block;
+                    
+                    text-overflow: ellipsis;
+
+                    overflow: hidden;
+
+                    @media(max-width: 540px) {
+                        width: 125px;
+                    }
                 }
 
                 a {

@@ -50,10 +50,17 @@ export const ProfileSidebarContainer = styled.section`
             }
 
             span {
-                display: block;
+                display: inline-block;
                 padding-bottom: 0.8rem;
                 
-                font-size: 0.8rem;
+                font-size: 0.7rem;
+                text-overflow: ellipsis;
+
+                overflow: hidden;
+
+                @media(max-width: 540px) {
+                    width: 40px;
+                }
             }
         }
     }

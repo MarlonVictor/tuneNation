@@ -46,7 +46,7 @@ export function FormBox() {
 				{isScrap 
 					? (
 						<textarea 
-							placeholder="Qual mensagem você quer deixar?"
+							placeholder="Digite seu scrap aqui..."
 						/>
 					)
 					: (

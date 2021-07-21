@@ -64,7 +64,7 @@ export function PopularUsersBox() {
 	]
 	
 	return (
-		<ProfileRelationsContainer>
+		<ProfileRelationsContainer className="popular">
 			<h2>Pessoas Populares</h2>
 
 			<ul>

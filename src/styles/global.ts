@@ -76,7 +76,7 @@ export default createGlobalStyle`
         }
     }
 
-    @media(max-width: 425px) {
+    @media(max-width: 565px) {
         html {
             // 12px
             font-size: 75%;

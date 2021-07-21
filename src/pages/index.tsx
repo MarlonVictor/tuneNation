@@ -35,16 +35,16 @@ export default function Home() {
 				<title>Home | tuneNation</title>
 			</Head>
 
-			<Header />
+			<Header page="home" />
 
 			<HomeContainer>
-				<div>
+				<div className="left">
 					<ProfileSidebar username={githubUser} />
 
 					<PopularUsersBox />
 				</div>
 
-				<div>
+				<div className="mid">
 					<section>
 						<FormBox />
 					</section>
@@ -54,7 +54,7 @@ export default function Home() {
 					</section>
 				</div>
 
-				<div>
+				<div className="right">
 					<CommunitiesBox communities={communities} />
 
 					<FollowersBox 

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
-import { BiSearchAlt2, BiExit, BiMoon, BiSun } from 'react-icons/bi'
+import { BiSearchAlt2, BiExit, BiMoon, BiSun, BiUser } from 'react-icons/bi'
 
 import { ThemeContext } from '../../context/ThemeContext'
 
@@ -12,7 +12,11 @@ import DarkLogoImage from '../../../public/dark-logo.svg'
 import { HeaderContainer, InputContent, NavigationAnchors, ToggleMenu } from './styles'
 
 
-export function Header() {
+type HeaderProps = {
+	page: string
+}
+
+export function Header({ page }: HeaderProps) {
 	const { theme, toggleTheme } = useContext(ThemeContext)
 
 	return (
@@ -33,25 +37,25 @@ export function Header() {
 
 					<NavigationAnchors>
 						<Link href="/">
-							<a className='active'>Home</a>
+							<a className={page === 'home' ? 'active' : ''}>Home</a>
 						</Link>
-						<Link href="/friends">
-							<a>Amigos</a>
+						<Link href="/profile">
+							<a className={page === 'profile' ? 'active' : ''}>Perfil</a>
 						</Link>
 						<Link href="/communities">
-							<a>Comunidades</a>
+							<a className={page === 'communities' ? 'active' : ''}>Comunidades</a>
 						</Link>
 					</NavigationAnchors>
 				</div>
 				
 				<div>
 					{theme == 'light' 
-						? <BiSun 
-							className="toggle-theme light" 
+						? <BiMoon 
+							className="toggle dark" 
 							onClick={toggleTheme}
 						/>
-						: <BiMoon 
-							className="toggle-theme dark" 
+						: <BiSun 
+							className="toggle light" 
 							onClick={toggleTheme}
 						/>
 					}
@@ -62,6 +66,10 @@ export function Header() {
 						<RiArrowDownSLine className="arrow" />
 
 						<div>
+							<a href="/">
+								Perfil
+								<BiUser />
+							</a>
 							<a href="/">
 								Sair
 								<BiExit />
