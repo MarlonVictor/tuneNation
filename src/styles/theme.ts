@@ -7,7 +7,8 @@ export const lightTheme = {
 	button: '#FFD75C',
 	card: '#FFF',
 	border: '#ADB5BD',
-	scroll: '#ADB5BD'
+	scroll: '#ADB5BD',
+	gradient: 'linear-gradient(to top, #ffd75c, #ffd54e, #ffd43d, #ffd229, #fed103)'
 }
 
 export const darkTheme = {
@@ -19,5 +20,6 @@ export const darkTheme = {
 	button: '#565A6A',
 	card: '#303134',
 	border: '#ADB5BD',
-	scroll: '#303134'
+	scroll: '#303134',
+	gradient: 'linear-gradient(to top, #565A6A, #2A3047, #303134, #202124)'
 }

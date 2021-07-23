@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { destroyCookie } from 'nookies'
 import React, { useContext } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { BiSearchAlt2, BiExit, BiMoon, BiSun, BiUser } from 'react-icons/bi'
@@ -13,10 +14,11 @@ import { HeaderContainer, InputContent, NavigationAnchors, ToggleMenu } from './
 
 
 type HeaderProps = {
-	page: string
+	page: string,
+	user: string,
 }
 
-export function Header({ page }: HeaderProps) {
+export function Header({ page, user }: HeaderProps) {
 	const { theme, toggleTheme } = useContext(ThemeContext)
 
 	return (
@@ -36,7 +38,7 @@ export function Header({ page }: HeaderProps) {
 					</InputContent>
 
 					<NavigationAnchors>
-						<Link href="/">
+						<Link href="/home">
 							<a className={page === 'home' ? 'active' : ''}>Home</a>
 						</Link>
 						<Link href="/profile">
@@ -61,8 +63,8 @@ export function Header({ page }: HeaderProps) {
 					}
 
 					<ToggleMenu>
-						<img src={'https://github.com/MarlonVictor.png'} />
-						<span>@MarlonVictor</span>
+						<img src={`https://github.com/${user}.png`} />
+						<span>@{user}</span>
 						<RiArrowDownSLine className="arrow" />
 
 						<div>
@@ -70,10 +72,13 @@ export function Header({ page }: HeaderProps) {
 								Perfil
 								<BiUser />
 							</a>
-							<a href="/">
-								Sair
-								<BiExit />
-							</a>
+							
+							<Link href="/">
+								<a onClick={() => destroyCookie(null, 'USER_TOKEN')}>
+									Sair
+									<BiExit />
+								</a>
+							</Link>
 						</div>
 					</ToggleMenu>
 				</div>
