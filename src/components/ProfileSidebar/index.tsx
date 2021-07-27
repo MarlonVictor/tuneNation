@@ -5,34 +5,35 @@ import { ProfileSidebarContainer } from './styles'
 
 
 type ProfileSidebarProps = {
-    username: string,
+    user: {
+		name: string,
+		login: string,
+		followers: number,
+		following: number,
+	}
 }
 
-export function ProfileSidebar({ username }: ProfileSidebarProps) {
+export function ProfileSidebar({ user }: ProfileSidebarProps) {
 	return (
 		<ProfileSidebarContainer>
 			<header>
 				<Link href="/profile">
 					<a>
-						<img src={`https://github.com/${username}.png`} />
+						<img src={`https://github.com/${user?.login}.png`} />
 
-						<h3>Marlon Victor</h3>
-						<span>@{username}</span>
+						<h3>{user?.name}</h3>
+						<span>@{user?.login}</span>
 					</a>
 				</Link>
 
 				<div className="infos">
 					<div>
-						<h3>27</h3>
+						<h3>{user?.following}</h3>
 						<span>Seguindo</span>
 					</div>
 					<div>
-						<h3>31</h3>
+						<h3>{user?.followers}</h3>
 						<span>Seguidores</span>
-					</div>
-					<div>
-						<h3>3</h3>
-						<span>Comunidades</span>
 					</div>
 				</div>
 			</header>

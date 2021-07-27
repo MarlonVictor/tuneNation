@@ -23,3 +23,27 @@ export const ProfileContainer = styled.main`
         grid-template-columns: 1fr;
     }
 `
+
+export const CommunitiesButton = styled.button`
+    height: 3rem;
+    
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: ${({ theme }) => theme.title};
+
+    background: ${({ theme }) => theme.button};
+    
+    border-radius: 8px;
+    border: 0;
+
+    cursor: pointer;
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+
+    @media(min-width: 425px) {
+        display: none;
+    }
+`

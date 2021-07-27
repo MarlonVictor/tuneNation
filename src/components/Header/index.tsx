@@ -25,12 +25,14 @@ export function Header({ page, user }: HeaderProps) {
 		<HeaderContainer>
 			<nav>
 				<div>
-					<Image 
-						src={theme === 'light' ? LightLogoImage : DarkLogoImage}
-						alt="Tune Nation"
-						width={100}
-						height={50}
-					/>
+					<Link href="/home">
+						<Image 
+							src={theme === 'light' ? LightLogoImage : DarkLogoImage}
+							alt="Tune Nation"
+							width={100}
+							height={50}
+						/>
+					</Link>
 
 					<InputContent>
 						<BiSearchAlt2 />
@@ -68,7 +70,7 @@ export function Header({ page, user }: HeaderProps) {
 						<RiArrowDownSLine className="arrow" />
 
 						<div>
-							<a href="/">
+							<a href="/profile">
 								Perfil
 								<BiUser />
 							</a>

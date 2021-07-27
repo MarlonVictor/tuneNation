@@ -40,9 +40,7 @@ export const ProfileInfosContainer = styled.div`
                 border-bottom: 2px solid ${({ theme }) => theme.background};
             }
 
-            span {
-                padding-left: 5px;
-
+            p {
                 font-size: 0.9rem;
                 line-height: 20px;
             }

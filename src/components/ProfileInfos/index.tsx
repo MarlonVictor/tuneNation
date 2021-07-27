@@ -3,11 +3,20 @@ import React from 'react'
 import { ProfileInfosContainer, NostalgicIconsList } from './styles'
 
 
-type ProfileInfosProps = {
-	randomPhrase: string
+type UserType = {
+	bio: string,
+	name: string,
+	email: string,
+	company: string,
+	location: string,
+	html_url: string,
 }
 
-export function ProfileInfos({ randomPhrase }: ProfileInfosProps) {
+type ProfileInfosProps = {
+	user: UserType
+}
+
+export function ProfileInfos({ user }: ProfileInfosProps) {
 	const nostalgicIcons = [
 		[
 			{ name: 'Scraps', icon: 'book' },
@@ -26,12 +35,7 @@ export function ProfileInfos({ randomPhrase }: ProfileInfosProps) {
 	return (
 		<ProfileInfosContainer>
 			<section>
-				<h2>Bem vindo(a), Marlon Victor</h2>
-					
-				<p>
-					<strong>Frase do momento: </strong>
-					{randomPhrase}
-				</p>
+				<h2>Bem vindo(a), {user.name}</h2>
 
 				<NostalgicIconsList>
 					{nostalgicIcons[0].map(({ name, icon }) => {
@@ -78,24 +82,34 @@ export function ProfileInfos({ randomPhrase }: ProfileInfosProps) {
 
 				<ul>
 					<li>
-						<strong>Email:</strong>
-						<span>cmarlonvictor11@gmail.com</span>
+						<p>
+							<strong>Email: </strong>
+							{user.email || '...'}
+						</p>
 					</li>
 					<li>
-						<strong>Github:</strong>
-						<span>https://github.com/MarlonVictor</span>
+						<p>
+							<strong>Github: </strong>
+							{user.html_url || '...'}
+						</p>
 					</li>
 					<li>
-						<strong>Companhia:</strong>
-						<span>UNIGRANRIO</span>
+						<p>
+							<strong>Localização: </strong>
+							{user.location || '...'}
+						</p>
 					</li>
 					<li>
-						<strong>Localização:</strong>
-						<span>Rio de Janeiro</span>
+						<p>
+							<strong>Companhia(s): </strong>
+							{user.company || '...'}
+						</p>
 					</li>
 					<li>
-						<strong>Biografa:</strong>
-						<span>19 years, studying Analysis and Systems Development</span>
+						<p>
+							<strong>Biografia: </strong>
+							{user.bio || '...'}
+						</p>
 					</li>
 				</ul>
 			</section>
