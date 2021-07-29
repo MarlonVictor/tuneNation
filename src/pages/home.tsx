@@ -48,7 +48,7 @@ export default function Home({ githubUser }: HomeProps) {
 	}
 
 	return (
-		<>
+		<HomeContainer>
 			<Head>
 				<title>Home | tuneNation</title>
 			</Head>
@@ -58,7 +58,7 @@ export default function Home({ githubUser }: HomeProps) {
 				user={githubUser} 
 			/>
 
-			<HomeContainer>
+			<main>
 				<div className="left">
 					<ProfileSidebar user={userInfos} />
 
@@ -83,8 +83,8 @@ export default function Home({ githubUser }: HomeProps) {
 						followersList={followers} 
 					/>
 				</div>
-			</HomeContainer>
-		</>
+			</main>
+		</HomeContainer>
 	)
 }
 

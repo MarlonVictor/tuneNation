@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { NotFoundContainer } from '../styles/pages/error'
 
 
-export default function Custom404() {
+export default function Custom500() {
 	const router = useRouter()
 
 	function goToHome() {
@@ -19,11 +19,11 @@ export default function Custom404() {
 	return (
 		<NotFoundContainer>
 			<Head>
-				<title>404 | tuneNation</title>
+				<title>500 | tuneNation</title>
 			</Head>
 			<div className="top">
-				<h1>404</h1>
-				<h3>page not found</h3>
+				<h1>500</h1>
+				<h3>ERROR</h3>
 			</div>
 			<div className="container">
 				<div className="ghost-copy">
@@ -42,7 +42,7 @@ export default function Custom404() {
 				<div className="shadow" />
 			</div>
 			<div className="bottom">
-				<p>Parece que não conseguimos encontrar a página que você estava procurando!</p>
+				<p>Parece que não ocorreu algum erro ao encontrar a página que você estava procurando!</p>
 				<div className="buttons">
 					<button onClick={goBack}>Back</button>
 					<button onClick={goToHome}>Home</button>

@@ -1,7 +1,9 @@
 import React from 'react'
+import Link from 'next/link'
 import { BiPlus } from 'react-icons/bi'
 
-import { CommunitiesBoxList, CommunitiesBoxFooter } from './styles'
+
+import { CommunitiesBoxList, CommunitiesBoxFooter, AllCommunitiesBoxContainer } from './styles'
 
 
 type CommunityType = {
@@ -22,11 +24,11 @@ export function CommunitiesBox({ communities }: CommunitiesBoxProps) {
 			<h2>Comunidades</h2>
 
 			<CommunitiesBoxList>
-				{communities.map(community => {
+				{communities.slice(0, 5).map(community => {
 					return (
 						<li key={community.id}>
 							<a 
-								target='_blank'
+								target="_blank"
 								rel="noreferrer"
 								href={community.communityUrl}
 							>
@@ -39,11 +41,36 @@ export function CommunitiesBox({ communities }: CommunitiesBoxProps) {
 			</CommunitiesBoxList>
 
 			<CommunitiesBoxFooter>
-				<a href="/">
-					<BiPlus />
-					Ver mais comunidades
-				</a>
+				<Link href="/communities">
+					<a>
+						<BiPlus />
+						Ver mais comunidades
+					</a>
+				</Link>
 			</CommunitiesBoxFooter>
 		</section>
+	)
+}
+
+export function AllCommunitiesBox({ communities }: CommunitiesBoxProps) {
+	return (
+		<AllCommunitiesBoxContainer>
+			<h2>Todas Comunidades:</h2>
+
+			<main>
+				{communities.map(community => {
+					return (
+						<a target="_blank" 
+							rel="noreferrer"
+							key={community.id} 
+							href={community.communityUrl} 
+						>
+							<img src={community.imageUrl} />
+							<span>{community.title}</span>
+						</a>
+					)
+				})}
+			</main>
+		</AllCommunitiesBoxContainer>
 	)
 }

@@ -1,15 +1,26 @@
 import styled from 'styled-components'
 
 
-export const HomeContainer = styled.main`
-    display: grid;
-    grid-template-columns: 280px 1fr 312px;
-    gap: 10px;
+export const HomeContainer = styled.div`
+    background: ${({ theme }) => theme.background};
 
-    max-width: 1240px;
+    main {
+        display: grid;
+        grid-template-columns: 280px 1fr 312px;
+        gap: 10px;
+        max-width: 1240px;
+        padding: 16px;
+        margin: 0 auto;
+    }
 
-    padding: 16px;
-    margin: 0 auto;
+    section {
+        color: ${({ theme }) => theme.text};
+        background: ${({ theme }) => theme.card};
+
+        h2 {
+            color: ${({ theme }) => theme.title};
+        }
+    }
 
     @media(max-width: 1024px) {
         grid-template-columns: 1fr 2fr;

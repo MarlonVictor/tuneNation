@@ -96,3 +96,52 @@ export const CommunitiesBoxFooter = styled.footer`
         }
     }
 `
+
+export const AllCommunitiesBoxContainer = styled.section`
+    main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+
+        margin: 1rem;
+
+        cursor: pointer;
+        transition: filter 0.2s;
+
+        @media(max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            border-radius: 8px;
+            background: ${({ theme }) => theme.background};
+    
+            img {
+                width: 100%;
+                height: 8rem;
+    
+                border-radius: 8px 8px 0 0;
+                object-fit: cover;
+            }
+    
+            span {
+                display: flex;
+                align-items: center;
+    
+                height: 3rem;
+                padding: 0.5rem;
+                
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            &:hover {
+                filter: brightness(0.97);
+            }
+        }
+    }
+`

@@ -10,6 +10,10 @@ export const HeaderContainer = styled.header`
         align-items: center;
     }
 
+    img {
+        cursor: pointer;
+    }
+
     nav {
         display: flex;
         align-items: center;

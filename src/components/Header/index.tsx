@@ -70,10 +70,12 @@ export function Header({ page, user }: HeaderProps) {
 						<RiArrowDownSLine className="arrow" />
 
 						<div>
-							<a href="/profile">
-								Perfil
-								<BiUser />
-							</a>
+							<Link href="/profile">
+								<a>
+									Perfil
+									<BiUser />
+								</a>
+							</Link>
 							
 							<Link href="/">
 								<a onClick={() => destroyCookie(null, 'USER_TOKEN')}>

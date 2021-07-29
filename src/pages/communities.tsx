@@ -1,32 +1,28 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import nookies from 'nookies'
 import jwt from 'jsonwebtoken'
 import { GetServerSideProps } from 'next'
 import React, { useEffect, useState } from 'react'
 
 import { api } from '../services/api'
+import { useCommunities } from '../hooks/useCommunities'
 
 import { Header } from '../components/Header'
-import { ProfileInfos } from '../components/ProfileInfos'
+import { AllCommunitiesBox } from '../components/CommunitiesBox'
 import { ProfileSidebar } from '../components/ProfileSidebar'
-import { FollowersBox } from '../components/ProfileRelationsBox'
+import { PopularUsersBox } from '../components/ProfileRelationsBox'
 
-import { ProfileContainer, CommunitiesButton } from '../styles/pages/profile'
+import { CommunitiesContainer } from '../styles/pages/communities'
 
 
-type ProfileProps = {
+type CommunitiesProps = {
 	githubUser: string
 }
 
-export default function Profile({ githubUser }: ProfileProps) {
-	const [followers, setFollowers] = useState([])
-	const [userInfos, setUserInfos] = useState()
+export default function Communities({ githubUser }: CommunitiesProps) {
+	const { communities } = useCommunities()
 
-	async function fetchFollowers() {
-		const { data } = await api.get(`users/${githubUser}/followers`)
-		setFollowers(data)
-	}
+	const [userInfos, setUserInfos] = useState()
 
 	async function fetchUserInfos() {
 		const { data } = await api.get(`users/${githubUser}`)
@@ -34,7 +30,6 @@ export default function Profile({ githubUser }: ProfileProps) {
 	}
 	
 	useEffect(() => {
-		fetchFollowers()
 		fetchUserInfos()
 	}, [])
 
@@ -45,37 +40,26 @@ export default function Profile({ githubUser }: ProfileProps) {
 	}
 
 	return (
-		<ProfileContainer>
+		<CommunitiesContainer>
 			<Head>
 				<title>Perfil | tuneNation</title>
 			</Head>
 
 			<Header 
-				page="profile" 
+				page="communities" 
 				user={githubUser} 
 			/>
             
 			<main>
-				<div>
+				<div className="left">
 					<ProfileSidebar user={userInfos} />
+
+					<PopularUsersBox />
 				</div>
 
-				<Link href="/communities">
-					<CommunitiesButton>
-						Ver todas comunidades
-					</CommunitiesButton>
-				</Link>
-
-				<ProfileInfos 
-					user={userInfos}
-				/>
-
-				<FollowersBox 
-					username={githubUser}
-					followersList={followers} 
-				/>
+				<AllCommunitiesBox communities={communities} />
 			</main>
-		</ProfileContainer>
+		</CommunitiesContainer>
 	)
 }
 
@@ -87,5 +71,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		props: {
 			githubUser
 		}
-	}	
+	}
 }

@@ -63,11 +63,14 @@ export const LoginContainer = styled.div`
 
         h2 {
             padding: 2rem 4rem;
+            color: ${({ theme }) => theme.title};
         }
         
         p {
-            font-size: 1rem;
             padding: 0.2rem 4rem;
+
+            font-size: 1rem;
+            color: ${({ theme }) => theme.text};
 
             strong {
                 color: ${({ theme }) => theme.secondary};
@@ -118,7 +121,9 @@ export const FormContainer = styled.main`
     
     width: 30rem;
     
+    color: ${({ theme }) => theme.text};
     background: ${({ theme }) => theme.card};
+    
     border-radius: 8px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
