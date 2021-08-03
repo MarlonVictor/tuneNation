@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, FormEvent } from 'react'
 
 import { BiMessageAdd, BiGroup } from 'react-icons/bi'
 import { IoMdSend } from 'react-icons/io'
@@ -6,9 +6,11 @@ import { IoMdSend } from 'react-icons/io'
 import { FormBoxContainer, ButtonContainer } from './styles'
 
 
-export function FormBox() {
-	const githubUser = 'MarlonVictor'
+type FormBoxProps = {
+    username: string
+}
 
+export function FormBox({ username }: FormBoxProps) {
 	const [isScrap, setIsScrap] = useState(true)
 
 	function handleNewCommunity(e) {
@@ -16,14 +18,31 @@ export function FormBox() {
 
 		const data = new FormData(e.target)
 
+		const scrap = {
+			text: data.get('text'),
+			creatorSlug: username,
+		}
+
 		const community = {
 			title: data.get('title'),
 			imageUrl: data.get('imageUrl'),
-			creatorSlug: githubUser,
+			creatorSlug: username,
 			communityUrl: data.get('communityUrl'),
 		}
 
-		if (!isScrap) {
+		if (isScrap) {
+			fetch('/api/scraps', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(scrap)
+
+			}).then(() => {
+				document.location.reload()
+			})
+
+		} else {
 			fetch('/api/communities', {
 				method: 'POST',
 				headers: {
@@ -46,7 +65,9 @@ export function FormBox() {
 				{isScrap 
 					? (
 						<textarea 
+							name="text"
 							placeholder="Digite seu scrap aqui..."
+							required
 						/>
 					)
 					: (

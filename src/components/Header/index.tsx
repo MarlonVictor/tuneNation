@@ -15,10 +15,10 @@ import { HeaderContainer, InputContent, NavigationAnchors, ToggleMenu } from './
 
 type HeaderProps = {
 	page: string,
-	user: string,
+	username: string,
 }
 
-export function Header({ page, user }: HeaderProps) {
+export function Header({ page, username }: HeaderProps) {
 	const { theme, toggleTheme } = useContext(ThemeContext)
 
 	return (
@@ -26,12 +26,14 @@ export function Header({ page, user }: HeaderProps) {
 			<nav>
 				<div>
 					<Link href="/home">
-						<Image 
-							src={theme === 'light' ? LightLogoImage : DarkLogoImage}
-							alt="Tune Nation"
-							width={100}
-							height={50}
-						/>
+						<a>
+							<Image 
+								src={theme === 'light' ? LightLogoImage : DarkLogoImage}
+								alt="Tune Nation"
+								width={100}
+								height={50}
+							/>
+						</a>
 					</Link>
 
 					<InputContent>
@@ -65,8 +67,8 @@ export function Header({ page, user }: HeaderProps) {
 					}
 
 					<ToggleMenu>
-						<img src={`https://github.com/${user}.png`} />
-						<span>@{user}</span>
+						<img src={`https://github.com/${username}.png`} />
+						<span>@{username}</span>
 						<RiArrowDownSLine className="arrow" />
 
 						<div>

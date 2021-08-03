@@ -122,6 +122,7 @@ export const ToggleMenu = styled.div`
     position: relative;
     height: 50px;
     gap: 0.5rem;
+    z-index: 10;
     
     cursor: pointer;
     background: ${({ theme }) => theme.card};

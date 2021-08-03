@@ -14,6 +14,18 @@ export const ProfileContainer = styled.div`
 
         padding: 16px;
         margin: 0 auto;
+
+        @media(max-width: 1024px) {
+            grid-template-columns: 1fr 2fr;
+
+            > section {
+                display: none;
+            }
+        }
+
+        @media(max-width: 540px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     section {
@@ -23,18 +35,6 @@ export const ProfileContainer = styled.div`
         h2 {
             color: ${({ theme }) => theme.title};
         }
-    }
-
-    @media(max-width: 1024px) {
-        grid-template-columns: 1fr 2fr;
-
-        > section {
-            display: none;
-        }
-    }
-
-    @media(max-width: 540px) {
-        grid-template-columns: 1fr;
     }
 `
 

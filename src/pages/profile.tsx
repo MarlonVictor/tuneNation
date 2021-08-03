@@ -52,7 +52,7 @@ export default function Profile({ githubUser }: ProfileProps) {
 
 			<Header 
 				page="profile" 
-				user={githubUser} 
+				username={githubUser} 
 			/>
             
 			<main>

@@ -14,6 +14,18 @@ export const CommunitiesContainer = styled.div`
     
         padding: 16px;
         margin: 0 auto;
+
+        @media(max-width: 1024px) {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        @media(max-width: 540px) {
+            grid-template-columns: 1fr;
+
+            .left section:last-child {
+                display: none;
+            }
+        }
     }
 
     section {
@@ -22,18 +34,6 @@ export const CommunitiesContainer = styled.div`
 
         h2 {
             color: ${({ theme }) => theme.title};
-        }
-    }
-
-    @media(max-width: 1024px) {
-        grid-template-columns: 1fr 2fr;
-    }
-
-    @media(max-width: 540px) {
-        grid-template-columns: 1fr;
-
-        .left section:last-child {
-            display: none;
         }
     }
 `

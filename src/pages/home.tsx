@@ -5,10 +5,12 @@ import { GetServerSideProps } from 'next'
 import React, { useEffect, useState } from 'react'
 
 import { api } from '../services/api'
+import { useScraps } from '../hooks/useScraps'
 import { useCommunities } from '../hooks/useCommunities'
 
 import { Header } from '../components/Header'
 import { FormBox } from '../components/FormBox'
+import { ScrapsBox } from '../components/ScrapsBox'
 import { ProfileSidebar } from '../components/ProfileSidebar'
 import { CommunitiesBox } from '../components/CommunitiesBox'
 import { FollowersBox, PopularUsersBox } from '../components/ProfileRelationsBox'
@@ -22,6 +24,7 @@ type HomeProps = {
 
 export default function Home({ githubUser }: HomeProps) {
 	const { communities } = useCommunities()
+	const { scraps } = useScraps()
 
 	const [followers, setFollowers] = useState([])
 	const [userInfos, setUserInfos] = useState()
@@ -55,7 +58,7 @@ export default function Home({ githubUser }: HomeProps) {
 
 			<Header 
 				page="home" 
-				user={githubUser} 
+				username={githubUser} 
 			/>
 
 			<main>
@@ -63,16 +66,22 @@ export default function Home({ githubUser }: HomeProps) {
 					<ProfileSidebar user={userInfos} />
 
 					<PopularUsersBox />
+
+					<FollowersBox 
+						username={githubUser}
+						followersList={followers} 
+					/>
 				</div>
 
 				<div className="mid">
 					<section>
-						<FormBox />
+						<FormBox username={githubUser} />
 					</section>
-
-					<section>
-						<h2>Scraps</h2>
-					</section>
+                    
+					<ScrapsBox 
+						scraps={scraps} 
+						username={githubUser}
+					/>
 				</div>
 
 				<div className="right">

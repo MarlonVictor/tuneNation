@@ -47,7 +47,7 @@ export default function Communities({ githubUser }: CommunitiesProps) {
 
 			<Header 
 				page="communities" 
-				user={githubUser} 
+				username={githubUser} 
 			/>
             
 			<main>
