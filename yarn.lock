@@ -2423,6 +2423,11 @@ globby@^11.0.3:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
+goober@^2.0.35:
+  version "2.0.39"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.39.tgz#0a52bf78ee9562270669e7603f0250f014f37cb1"
+  integrity sha512-ryw0VaZaehKmnjL4ZEJaiUVQc+XFa5dXIAbf2QC3F+WVKRbzaSuJyq7w28bdlwqYctiZ0Ok5QL/Pap5M2pCHQg==
+
 got@^10.7.0:
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/got/-/got-10.7.0.tgz#62889dbcd6cca32cd6a154cc2d0c6895121d091f"
@@ -4103,6 +4108,13 @@ react-dom@17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-hot-toast@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.1.0.tgz#f4fe3107a3ccd1d7e76ad3d3282967fbf2fccf2c"
+  integrity sha512-/wUoUVUC/qCYmkJvMzl/oXBIJe47vYqtwOpA76Pz8SrklrF8RBUTLG2eS+ivznzQzY8YlsyODIV7Qk3vOnFf1g==
+  dependencies:
+    goober "^2.0.35"
+
 react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
@@ -4117,6 +4129,11 @@ react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-loading@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
+  integrity sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A==
 
 react-refresh@0.8.3:
   version "0.8.3"

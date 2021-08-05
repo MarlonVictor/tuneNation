@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ScrapContent } from './styled'
+import { ScrapContent } from './styles'
 
 
 type ScrapType = {

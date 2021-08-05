@@ -8,8 +8,9 @@ import { api } from '../services/api'
 import { useCommunities } from '../hooks/useCommunities'
 
 import { Header } from '../components/Header'
-import { AllCommunitiesBox } from '../components/CommunitiesBox'
+import { Loading } from '../components/Loading'
 import { ProfileSidebar } from '../components/ProfileSidebar'
+import { AllCommunitiesBox } from '../components/CommunitiesBox'
 import { PopularUsersBox } from '../components/ProfileRelationsBox'
 
 import { CommunitiesContainer } from '../styles/pages/communities'
@@ -35,7 +36,7 @@ export default function Communities({ githubUser }: CommunitiesProps) {
 
 	if(!userInfos) {
 		return (
-			<h3>Loading...</h3>
+			<Loading />
 		)
 	}
 

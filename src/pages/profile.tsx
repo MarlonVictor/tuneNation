@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { api } from '../services/api'
 
 import { Header } from '../components/Header'
+import { Loading } from '../components/Loading'
 import { ProfileInfos } from '../components/ProfileInfos'
 import { ProfileSidebar } from '../components/ProfileSidebar'
 import { FollowersBox } from '../components/ProfileRelationsBox'
@@ -40,7 +41,7 @@ export default function Profile({ githubUser }: ProfileProps) {
 
 	if(!userInfos) {
 		return (
-			<h3>Loading...</h3>
+			<Loading />
 		)
 	}
 

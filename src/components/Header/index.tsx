@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { destroyCookie } from 'nookies'
 import React, { useContext } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { BiSearchAlt2, BiExit, BiMoon, BiSun, BiUser } from 'react-icons/bi'
 
@@ -38,7 +39,11 @@ export function Header({ page, username }: HeaderProps) {
 
 					<InputContent>
 						<BiSearchAlt2 />
-						<input type="text" placeholder="Pesquisar" />
+						<input 
+							type="text" 
+							placeholder="Pesquisar" 
+							onFocus={() => toast.error('Ainda não foi implementado', { icon: '⏳' })}
+						/>
 					</InputContent>
 
 					<NavigationAnchors>
@@ -89,6 +94,20 @@ export function Header({ page, username }: HeaderProps) {
 					</ToggleMenu>
 				</div>
 			</nav>
+
+			{theme === 'light' 
+				? <Toaster />
+				: (
+					<Toaster 
+						toastOptions={{
+							style: {
+								background: '#565A6A', 
+								color: '#FFF'
+							},
+						}}
+					/>
+				)
+			}
 		</HeaderContainer>
 	)
 }

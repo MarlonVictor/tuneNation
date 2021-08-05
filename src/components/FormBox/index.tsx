@@ -1,7 +1,7 @@
-import React, { useState, FormEvent } from 'react'
-
-import { BiMessageAdd, BiGroup } from 'react-icons/bi'
+import toast from 'react-hot-toast'
+import React, { useState } from 'react'
 import { IoMdSend } from 'react-icons/io'
+import { BiMessageAdd, BiGroup } from 'react-icons/bi'
 
 import { FormBoxContainer, ButtonContainer } from './styles'
 
@@ -31,27 +31,42 @@ export function FormBox({ username }: FormBoxProps) {
 		}
 
 		if (isScrap) {
-			fetch('/api/scraps', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(scrap)
-
-			}).then(() => {
-				document.location.reload()
-			})
+			toast.promise(
+				fetch('/api/scraps', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(scrap)
+    
+				}).then(() => {
+					document.location.reload()
+				}),
+				{
+					loading: 'Salvando...',
+					success: 'Scrap salvo',
+					error: 'Não foi possível salvar',
+				}
+			)
 
 		} else {
-			fetch('/api/communities', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(community)
-			})
-
-			setIsScrap(true)
+			toast.promise(
+				fetch('/api/communities', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(community)
+                    
+				}).then(() => {
+					setIsScrap(true)
+				}),
+				{
+					loading: 'Salvando...',
+					success: 'Comunidade salva',
+					error: 'Não foi possível salvar',
+				}
+			)
 		}
 	}
 

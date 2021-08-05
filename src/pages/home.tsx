@@ -2,14 +2,17 @@ import Head from 'next/head'
 import nookies from 'nookies'
 import jwt from 'jsonwebtoken'
 import { GetServerSideProps } from 'next'
-import React, { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { api } from '../services/api'
 import { useScraps } from '../hooks/useScraps'
+import { ThemeContext } from '../context/ThemeContext'
 import { useCommunities } from '../hooks/useCommunities'
 
 import { Header } from '../components/Header'
 import { FormBox } from '../components/FormBox'
+import { Loading } from '../components/Loading'
 import { ScrapsBox } from '../components/ScrapsBox'
 import { ProfileSidebar } from '../components/ProfileSidebar'
 import { CommunitiesBox } from '../components/CommunitiesBox'
@@ -23,6 +26,8 @@ type HomeProps = {
 }
 
 export default function Home({ githubUser }: HomeProps) {
+	const { theme } = useContext(ThemeContext)
+
 	const { communities } = useCommunities()
 	const { scraps } = useScraps()
 
@@ -46,7 +51,7 @@ export default function Home({ githubUser }: HomeProps) {
 
 	if(!userInfos) {
 		return (
-			<h3>Loading...</h3>
+			<Loading />
 		)
 	}
 
@@ -62,7 +67,7 @@ export default function Home({ githubUser }: HomeProps) {
 			/>
 
 			<main>
-				<div className="left">
+				<div className="left" onClick={() => toast.success('Carregou')}>
 					<ProfileSidebar user={userInfos} />
 
 					<PopularUsersBox />
@@ -93,6 +98,20 @@ export default function Home({ githubUser }: HomeProps) {
 					/>
 				</div>
 			</main>
+
+			{theme === 'light' 
+				? <Toaster />
+				: (
+					<Toaster 
+						toastOptions={{
+							style: {
+								background: '#565A6A', 
+								color: '#FFF'
+							},
+						}}
+					/>
+				)
+			}
 		</HomeContainer>
 	)
 }
